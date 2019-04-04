@@ -11,6 +11,9 @@
 //* Person receives `speak` as a method.
 //* This method logs out a phrase `Hello my name is Fred, I am from Bedrock` where `name` and `location` are the object's own props
 
+
+
+
 //Person Class
 
 class person {
@@ -33,6 +36,8 @@ class person {
     gender: "Female"
   });
 
+
+
 //Now that we have a Person as our base class, we'll build our Instructor class.
 //Instructor uses the same attributes that have been set up by Person
 //Instructor has the following unique props:
@@ -42,3 +47,44 @@ class person {
 //Instructor has the following methods:
 //`demo` receives a `subject` string as an argument and logs out the phrase 'Today we are learning about {subject}' where subject is the param passed in.
 // `grade` receives a `student` object and a `subject` string as arguments and logs out '{student.name} receives a perfect score on {subject}'
+
+
+
+
+//Instructor Class
+
+class Instructor extends person {
+    constructor(instAttr) {
+      super(instAttr);
+      this.specialty = instAttr.specialty;
+      this.favLanguage = instAttr.favLanguage;
+      this.catchPhrase = instAttr.catchPhrase;
+    }
+    demo(subject) {
+      return `Today, we are learning about ${subject}.`;
+    }
+    grade(student, subject) {
+      return `${student.name} receives a perfect score on ${subject}.`;
+    }
+    calculateGrade(student) {
+      if (Math.random() > 0.3 && student.grade < 100) {
+        student.grade++;
+      } else {
+        student.grade--;
+      }
+      return student.grade;
+    }
+  }
+
+
+//**Student**
+//Now we need some students!
+//Student uses the same attributes that have been set up by Person
+//Student has the following unique props:
+//`previousBackground` i.e. what the Student used to do before Lambda School
+//`className` i.e. CS132
+//`favSubjects`. i.e. an array of the student's favorite subjects ['Html', 'CSS', 'JavaScript']
+//Student has the following methods:
+//`listsSubjects` a method that logs out all of the student's favoriteSubjects one by one.
+//`PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
+//`sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`

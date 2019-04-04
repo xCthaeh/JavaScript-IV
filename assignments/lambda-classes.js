@@ -122,12 +122,12 @@ class Student extends person {
       this.favSubjects = studAttr.favSubjects;
       this.grade = studAttr.grade;
     }
-    listSubjects() {
+    listsSubjects() {
       this.favSubjects.forEach(function(favSubject) {
         console.log(favSubject);
       });
     }
-   prSubmit(subject) {
+   PRAssignment(subject) {
       return `${this.name} has submitted a PR for ${subject}.`;
     }
     sprintChallenge(subject) {
@@ -136,10 +136,9 @@ class Student extends person {
     graduate() {
       if (this.grade > 70) {
         return `Congratulations, You have graduated from Lambda School!`;
-      } else {
-        return `Your grade is ${
-          this.grade
-        }% and you are not ready to graduate yet.`;
+      } 
+      else {
+        return `Your grade is ${this.grade} % and you are not ready to graduate yet.`;
       }
     }
   }
@@ -153,6 +152,7 @@ const randy = new Student({
     previousBackground: "IT Management",
     className: "WEB19",
     favSubjects: ["Python", "Javascript"],
+    grade: 67,
   });
   
   const julia = new Student({
@@ -163,6 +163,7 @@ const randy = new Student({
     previousBackground: "Librarian",
     className: "WEB19",
     favSubjects: ["HTML", "CSS/SASS"],
+    grade: 95,
   });
 
 
@@ -237,4 +238,15 @@ console.log(mark.specialty);
 console.log(mark.catchPhrase);
 console.log(jer.grade(julia, "CSS"));
 console.log(mark.calculateGrade(randy));
-console.log(jer.calculateGrade(julia));
+console.log(mark.calculateGrade(julia));
+
+//student console logs
+
+console.log(julia.className);
+console.log(randy.previousBackground);
+randy.listsSubjects();
+julia.listsSubjects();
+console.log(randy.PRAssignment("This Statements"));
+console.log(julia.sprintChallenge("Applied Javascript"));
+console.log(randy.graduate());
+console.log(julia.graduate());

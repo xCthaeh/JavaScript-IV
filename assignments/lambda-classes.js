@@ -126,7 +126,6 @@ class Student extends person {
       this.favSubjects.forEach(function(favSubject) {
         console.log(favSubject);
       });
-      //return `${this.name}'s favorite subject is: \n${this.favSubjects.join("\n")}`;
     }
    prSubmit(subject) {
       return `${this.name} has submitted a PR for ${subject}.`;
@@ -177,3 +176,65 @@ const randy = new Student({
 //ProjectManagers have the following Methods:
 //`standUp` a method that takes in a slack channel and logs `{name} announces to {channel}, @channel standy times!​​​​​
 //`debugsCode` a method that takes in a student object and a subject and logs out `{name} debugs {student.name}'s code on {subject}`
+
+//Project Manager Class 
+
+class projectManager extends Instructor {
+    constructor(pmAttr) {
+      super(pmAttr);
+      this.gradClassName = pmAttr.gradClassName;
+      this.favInstructor = pmAttr.favInstructor;
+    }
+    standup(slackChannel) {
+      return `${this.name} announces to ${slackChannel}, @channel standy times!`;
+    }
+    debugsCode(student, subject) {
+      return `${this.name} debugs ${student.name}'s code on ${subject}.`;
+    }
+  }
+
+  //Project Manager Objects
+
+const brad = new projectManager({
+    name: "Brad",
+    location: "Russia",
+    age: 23,
+    gender: "Male",
+    specialty: "Front-end",
+    favLanguage: "React",
+    catchPhrase: "I prefer captain. But that will do, thanks.",
+    gradClassName: "WEB17",
+    favInstructor: "Josh"
+  });
+  
+  const mike = new projectManager({
+    name: "Michael",
+    location: "Altamonte",
+    age: 26,
+    gender: "Male",
+    specialty: "Back-end",
+    favLanguage: "Python",
+    catchPhrase: "Crikey",
+    gradClassName: "WEB16",
+    favInstructor: "Dan"
+  });
+
+
+
+
+
+  //console logs of Person
+
+console.log(aly.speak());
+console.log(aly.age);
+console.log(aly.gender);
+
+//console logs of Instructor
+
+console.log(mark.demo("HTML"));
+console.log(jer.favLanguage);
+console.log(mark.specialty);
+console.log(mark.catchPhrase);
+console.log(jer.grade(julia, "CSS"));
+console.log(mark.calculateGrade(randy));
+console.log(jer.calculateGrade(julia));

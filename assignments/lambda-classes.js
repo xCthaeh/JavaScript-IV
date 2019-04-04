@@ -29,7 +29,7 @@ class person {
   }
 
   //Objects for Person Class
-  const aly = new Person({
+  const aly = new person({
     name: "Alyssa",
     location: "Orlando",
     age: 25,
@@ -76,8 +76,31 @@ class Instructor extends person {
     }
   }
 
+//Instructor Objects
 
-//**Student**
+const jer = new Instructor({
+    name: "Jeremy",
+    location: "Los Angeles",
+    age: 30,
+    gender: "Male",
+    specialty: "Back-end",
+    favLanguage: "Python",
+    catchPhrase: `Wit beyond measure is man's greatest treasure.`
+  });
+  
+  const mark = new Instructor({
+    name: "Mark",
+    location: "New Orleans",
+    age: 33,
+    gender: "Male",
+    specialty: "Front-end",
+    favLanguage: "Javascript",
+    catchPhrase: `It's pizza time!`
+  });
+
+
+
+
 //Now we need some students!
 //Student uses the same attributes that have been set up by Person
 //Student has the following unique props:
@@ -88,3 +111,69 @@ class Instructor extends person {
 //`listsSubjects` a method that logs out all of the student's favoriteSubjects one by one.
 //`PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
 //`sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
+
+// Student Class
+
+class Student extends person {
+    constructor(studAttr) {
+      super(studAttr);
+      this.previousBackground = studAttr.previousBackground;
+      this.className = studAttr.className;
+      this.favSubjects = studAttr.favSubjects;
+      this.grade = studAttr.grade;
+    }
+    listSubjects() {
+      this.favSubjects.forEach(function(favSubject) {
+        console.log(favSubject);
+      });
+      //return `${this.name}'s favorite subject is: \n${this.favSubjects.join("\n")}`;
+    }
+   prSubmit(subject) {
+      return `${this.name} has submitted a PR for ${subject}.`;
+    }
+    sprintChallenge(subject) {
+      return `${this.name} has begun sprint challenge on ${subject}.`;
+    }
+    graduate() {
+      if (this.grade > 70) {
+        return `Congratulations, You have graduated from Lambda School!`;
+      } else {
+        return `Your grade is ${
+          this.grade
+        }% and you are not ready to graduate yet.`;
+      }
+    }
+  }
+
+//Student Objects
+const randy = new Student({
+    name: "Randy",
+    location: "Daytona Beach",
+    age: 27,
+    gender: "Male",
+    previousBackground: "IT Management",
+    className: "WEB19",
+    favSubjects: ["Python", "Javascript"],
+  });
+  
+  const julia = new Student({
+    name: "Julia",
+    location: "Somerset",
+    age: 29,
+    gender: "Female",
+    previousBackground: "Librarian",
+    className: "WEB19",
+    favSubjects: ["HTML", "CSS/SASS"],
+  });
+
+
+
+
+//Now that we have instructors and students, we'd be nowhere without our PM's
+//ProjectManagers are extensions of Instructors
+//ProjectManagers have the following unique props:
+//`gradClassName`: i.e. CS1
+//`favInstructor`: i.e. Sean
+//ProjectManagers have the following Methods:
+//`standUp` a method that takes in a slack channel and logs `{name} announces to {channel}, @channel standy times!​​​​​
+//`debugsCode` a method that takes in a student object and a subject and logs out `{name} debugs {student.name}'s code on {subject}`
